@@ -9,9 +9,14 @@ const routes = [
 		component: Overview,
 	},
 	{
-		path: '/detail',
+		path: '/detail/:id',
 		name: 'Detail',
 		component: Detail,
+	},
+	// this redirects any unknown routes to /overview
+	{
+		path: '/:pathMatch(.*)*',
+		redirect: '/overview',
 	},
 ];
 

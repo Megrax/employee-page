@@ -4,26 +4,30 @@
 	"employees": [
 		{
 			"name": "Alper Kamu",
+			"id": "alper",
 			"age": 20,
 			"position": "UI Developer",
 			"bio": "Perhaps customized bio from Alper Kamu."
 		},
 		{
 			"name": "Holden Caulfield",
+			"id": "holden",
 			"age": 22,
 			"position": "Engineer",
 			"bio": "Perhaps customized bio from Holden Caulfield."
 		},
 		{
 			"name": "Atticus Finch",
+			"id": "atticus",
 			"age": 34,
 			"position": "Architect",
 			"bio": "Perhaps customized bio from Atticus Finch."
 		},
 		{
 			"name": "Henry Letham",
+			"id": "henry",
 			"age": 20,
-			"position": "Account",
+			"position": "Accounting",
 			"bio": "Perhaps customized bio from Henry Letham."
 		}
 	]

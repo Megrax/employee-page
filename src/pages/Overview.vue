@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { ref } from 'vue';
 import BriefCard from '../components/BriefCard.vue';
 import config from '../../employees.json';
 </script>
@@ -18,10 +17,12 @@ import config from '../../employees.json';
 			<div class="flex flex-wrap -m-4">
 				<BriefCard
 					v-for="employee in config.employees"
+					:id="employee.id"
 					:name="employee.name"
 					:age="employee.age"
 					:bio="employee.bio"
 					:position="employee.position"
+					:key="employee.name"
 				/>
 			</div>
 		</div>
