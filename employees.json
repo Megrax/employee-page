@@ -1,0 +1,30 @@
+{
+	"title": "MEET OUR TEAM",
+	"teamSlogan": "All Over the World",
+	"employees": [
+		{
+			"name": "Alper Kamu",
+			"age": 20,
+			"position": "UI Developer",
+			"bio": "Perhaps customized bio from Alper Kamu."
+		},
+		{
+			"name": "Holden Caulfield",
+			"age": 22,
+			"position": "Engineer",
+			"bio": "Perhaps customized bio from Holden Caulfield."
+		},
+		{
+			"name": "Atticus Finch",
+			"age": 34,
+			"position": "Architect",
+			"bio": "Perhaps customized bio from Atticus Finch."
+		},
+		{
+			"name": "Henry Letham",
+			"age": 20,
+			"position": "Account",
+			"bio": "Perhaps customized bio from Henry Letham."
+		}
+	]
+}
