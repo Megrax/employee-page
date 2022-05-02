@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 import Overview from './pages/Overview.vue';
 import Member from './pages/Member.vue';
 import Department from './pages/Department.vue';
+import Login from './pages/Login.vue';
 
 const routes = [
 	{
@@ -19,6 +20,11 @@ const routes = [
 		name: 'Department',
 		component: Department,
 	},
+	{
+		path: '/login',
+		name: 'Login',
+		component: Login,
+	},
 	// this redirects any unknown routes to /overview
 	{
 		path: '/:pathMatch(.*)*',
@@ -26,7 +32,19 @@ const routes = [
 	},
 ];
 
-export default createRouter({
+const router = createRouter({
 	history: createWebHistory(),
 	routes,
 });
+
+router.beforeEach((to) => {
+	if (to.name !== 'Login' && !sessionStorage.getItem('loggedIn')) {
+		router.push('/login');
+		return false;
+	} else if (to.name === 'Login' && sessionStorage.getItem('loggedIn')) {
+		router.push('/');
+		return false;
+	}
+});
+
+export default router;

@@ -39,7 +39,7 @@ const handleGoToMember = (id: string) => {
 				</div>
 			</div>
 			<h1
-				class="sm:text-3xl text-2xl font-medium title-font text-gray-900 mb-8"
+				class="sm:text-3xl text-2xl font-medium title-font text-center text-gray-900 mb-8"
 			>
 				Members
 			</h1>
