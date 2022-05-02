@@ -3,7 +3,7 @@ import Avatar from 'vue-boring-avatars';
 import { useRoute } from 'vue-router';
 import config from '../../data.json';
 import InfoPair from '../components/InfoPair.vue';
-import BtnBack from '../components/BtnBack.vue';
+import BtnGroup from '../components/BtnGroup.vue';
 
 const route = useRoute();
 
@@ -14,7 +14,7 @@ const employee = config.employees.find(
 
 <template>
 	<section class="flex flex-col body-font">
-		<BtnBack />
+		<BtnGroup />
 		<div class="w-screen pt-24 flex flex-col items-center md:block">
 			<div
 				class="w-1/3 mb-10 md:mb-0 inline-flex items-center justify-center md:justify-end md:pr-9"

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useRoute, useRouter } from 'vue-router';
 import Avatar from 'vue-boring-avatars';
-import BtnBack from '../components/BtnBack.vue';
+import BtnGroup from '../components/BtnGroup.vue';
 import config from '../../data.json';
 
 const route = useRoute();
@@ -21,7 +21,7 @@ const handleGoToMember = (id: string) => {
 
 <template>
 	<section class="text-gray-600 body-font">
-		<BtnBack />
+		<BtnGroup />
 		<div class="container px-5 py-24 mx-auto">
 			<div class="text-center mb-12">
 				<h1
