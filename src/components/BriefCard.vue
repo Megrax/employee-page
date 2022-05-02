@@ -25,12 +25,17 @@ const handleGoToDetail = () => {
 			class="h-full py-2 flex flex-col items-center text-center rounded-md cursor-pointer hover:shadow-lg"
 			@click="handleGoToDetail"
 		>
-			<Avatar
-				variant="beam"
-				:name="name"
-				:square="true"
+			<Starport
+				:port="id"
 				class="flex-shrink-0 rounded-lg w-32 h-32 object-cover object-center mb-4"
-			/>
+			>
+				<Avatar
+					variant="beam"
+					:name="name"
+					:square="true"
+					class="flex-shrink-0 rounded-lg w-32 h-32 object-cover object-center mb-4"
+				/>
+			</Starport>
 			<div class="w-full">
 				<h2 class="title-font font-medium text-lg text-gray-900">
 					{{ name }}

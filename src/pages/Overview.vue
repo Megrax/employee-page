@@ -19,7 +19,6 @@ import config from '../../employees.json';
 					v-for="employee in config.employees"
 					:id="employee.id"
 					:name="employee.name"
-					:age="employee.age"
 					:bio="employee.bio"
 					:position="employee.position"
 					:key="employee.name"

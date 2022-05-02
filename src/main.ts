@@ -1,8 +1,8 @@
 import { createApp } from 'vue';
 import App from './App.vue';
 import router from './router';
+import StarportPlugin from 'vue-starport';
 import './index.css';
 
-// createApp(App).use(router).mount('#app');
-const app = createApp(App).use(router);
+const app = createApp(App).use(router).use(StarportPlugin());
 app.mount('#app');
