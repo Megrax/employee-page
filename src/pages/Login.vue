@@ -3,8 +3,8 @@ import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 import secrets from '../../secrets.json';
 
-const username = ref<string>('');
-const password = ref<string>('');
+const username = ref<string>('admin');
+const password = ref<string>('PXH*b*$Y8');
 const isCorrect = ref<boolean>(true);
 const router = useRouter();
 
