@@ -10,7 +10,7 @@
 		{
 			"name": "Development",
 			"description": "Developing products.",
-			"members": ["holden", "atticus"]
+			"members": ["holden", "atticus", "martineden"]
 		},
 		{
 			"name": "Design",
@@ -72,6 +72,20 @@
 				"email": "henryxyz@gmail.com",
 				"phone": "1234-987654321",
 				"address": "212 Fake Street, Fake City, Fake Country"
+			}
+		},
+		{
+			"name": "Martin Eden",
+			"id": "martineden",
+			"position": "Software Engineer",
+			"department": "Development",
+			"bio": "Geek.",
+			"detail": {
+				"birthday": "1990-11-02",
+				"email": "martin@gmail.com",
+				"phone": "1234-987654321",
+				"address": "12 Fake Street, Fake City, Fake Country",
+				"website": "http://blog.martineden.dev"
 			}
 		}
 	]
