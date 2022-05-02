@@ -21,6 +21,7 @@ const employee = config.employees.find(
 			>
 				<Starport
 					:port="route.params.id"
+					:duration="400"
 					class="flex-shrink-0 rounded-lg w-32 h-32 object-cover object-center"
 				>
 					<Avatar

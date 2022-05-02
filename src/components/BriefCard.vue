@@ -29,6 +29,7 @@ const handleGoToMember = () => {
 			<Starport
 				:port="id"
 				class="flex-shrink-0 rounded-lg w-32 h-32 object-cover object-center mb-4"
+				:duration="400"
 			>
 				<Avatar
 					variant="beam"

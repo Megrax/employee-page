@@ -47,6 +47,7 @@ const handleGoToMember = (id: string) => {
 				<Starport
 					v-for="memberId in department?.members"
 					:port="memberId"
+					:duration="400"
 					class="flex-shrink-0 rounded-lg w-32 h-32 object-cover object-center"
 				>
 					<Avatar
