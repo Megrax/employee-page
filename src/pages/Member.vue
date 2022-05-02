@@ -20,14 +20,14 @@ const handleGoToOverview = () => {
 <template>
 	<section class="flex flex-col body-font">
 		<div
-			class="absolute top-16 right-40 w-8 h-8 flex justify-center items-center cursor-pointer text-gray-400 hover:text-gray-600 transition-colors duration-200"
+			class="absolute top-16 right-48 w-8 h-8 flex justify-center items-center cursor-pointer text-gray-400 hover:text-gray-600 transition-colors duration-200"
 			@click="handleGoToOverview"
 		>
 			<Icon />
 		</div>
 		<div class="w-screen pt-24 flex flex-col items-center md:block">
 			<div
-				class="w-1/3 mb-10 md:mb-0 inline-flex items-center justify-center md:inline-block md:pl-40 lg:pl-48"
+				class="w-1/3 mb-10 md:mb-0 inline-flex items-center justify-center md:justify-end md:pr-9"
 			>
 				<Starport
 					:port="route.params.id"
