@@ -1,16 +1,23 @@
-# Vue 3 + TypeScript + Vite
+# Employee Page
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+## Project Tech Stack
 
-## Recommended IDE Setup
+`Vue 3` + `TypeScript` + `Tailwind CSS` + `Vite`
 
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar)
+## Employee Modification Workflow
 
-## Type Support For `.vue` Imports in TS
+1. Fork this repository or create a new branch if you have writing access.
+2. Make changes to the employee information, then create a Pull Request.
+3. Once the Pull Request is merged, Vercel will redeploy the employee page.
 
-Since TypeScript cannot handle type information for `.vue` imports, they are shimmed to be a generic Vue component type by default. In most cases this is fine if you don't really care about component prop types outside of templates. However, if you wish to get actual prop types in `.vue` imports (for example to get props validation when using manual `h(...)` calls), you can enable Volar's Take Over mode by following these steps:
+## Authentication
 
-1. Run `Extensions: Show Built-in Extensions` from VS Code's command palette, look for `TypeScript and JavaScript Language Features`, then right click and select `Disable (Workspace)`. By default, Take Over mode will enable itself if the default TypeScript extension is disabled.
-2. Reload the VS Code window by running `Developer: Reload Window` from the command palette.
+- This page's authentication is simply implemented by using `navigation guards` of `Vue Router`. Any attempts to visit employee information without logging in will be redirected to login page. 
+- Visitors can only login with a valid pair of `username` and `password` specified in `secrets.json`.
+- The `loggedIn` state was maintained by browser's `sessionStorage`, which performs an automatic logout when the user closes the tab or browser.
 
-You can learn more about Take Over mode [here](https://github.com/johnsoncodehk/volar/discussions/471).
+## Instructions on Development
+
+1. Clone this repository to your local machine.
+2. Run `yarn` to install dependencies.
+3. Run `yarn dev` to start the development server.
