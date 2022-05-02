@@ -1,30 +1,20 @@
 <script setup lang="ts">
 import Avatar from 'vue-boring-avatars';
-import { useRoute, useRouter } from 'vue-router';
-import config from '../../employees.json';
+import { useRoute } from 'vue-router';
+import config from '../../data.json';
 import InfoPair from '../components/InfoPair.vue';
-import Icon from '../components/icons/Reply.vue';
+import BtnBack from '../components/BtnBack.vue';
 
 const route = useRoute();
-const router = useRouter();
 
 const employee = config.employees.find(
 	(employee) => employee.id === route.params.id
 );
-
-const handleGoToOverview = () => {
-	router.push('/overview');
-};
 </script>
 
 <template>
 	<section class="flex flex-col body-font">
-		<div
-			class="absolute top-16 right-48 w-8 h-8 flex justify-center items-center cursor-pointer text-gray-400 hover:text-gray-600 transition-colors duration-200"
-			@click="handleGoToOverview"
-		>
-			<Icon />
-		</div>
+		<BtnBack />
 		<div class="w-screen pt-24 flex flex-col items-center md:block">
 			<div
 				class="w-1/3 mb-10 md:mb-0 inline-flex items-center justify-center md:justify-end md:pr-9"
@@ -35,7 +25,7 @@ const handleGoToOverview = () => {
 				>
 					<Avatar
 						variant="beam"
-						:name="employee?.name"
+						:name="employee?.id"
 						:square="true"
 						class="flex-shrink-0 rounded-lg w-32 h-32 object-cover object-center"
 					/>
@@ -49,6 +39,14 @@ const handleGoToOverview = () => {
 				>
 					{{ employee?.name }}
 				</h1>
+				<p class="text-gray-600 mb-2 leading-relaxed">
+					{{ employee?.position }} -
+					<RouterLink
+						:to="`/dep/${employee?.department}`"
+						class="text-indigo-500 hover:underline"
+						>{{ employee?.department }}</RouterLink
+					>
+				</p>
 				<p class="text-gray-600 mb-2 leading-relaxed">
 					{{ employee?.bio }}
 				</p>

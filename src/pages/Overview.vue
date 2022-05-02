@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import BriefCard from '../components/BriefCard.vue';
-import config from '../../employees.json';
+import config from '../../data.json';
 </script>
 
 <template>
@@ -21,6 +21,7 @@ import config from '../../employees.json';
 					:name="employee.name"
 					:bio="employee.bio"
 					:position="employee.position"
+					:dep="employee.department"
 					:key="employee.name"
 				/>
 			</div>

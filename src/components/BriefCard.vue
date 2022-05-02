@@ -6,6 +6,7 @@ const props = defineProps({
 	id: { type: String, required: true },
 	name: { type: String, required: true },
 	position: { type: String, required: true },
+	dep: { type: String, required: true },
 	bio: { type: String, required: true },
 });
 
@@ -31,7 +32,7 @@ const handleGoToMember = () => {
 			>
 				<Avatar
 					variant="beam"
-					:name="name"
+					:name="id"
 					:square="true"
 					class="flex-shrink-0 rounded-lg w-32 h-32 object-cover object-center mb-4"
 				/>
@@ -40,7 +41,7 @@ const handleGoToMember = () => {
 				<h2 class="title-font font-medium text-lg text-gray-900">
 					{{ name }}
 				</h2>
-				<h3 class="text-gray-500 mb-3">{{ position }}</h3>
+				<h3 class="text-gray-500 mb-3">{{ position }} - {{ dep }}</h3>
 				<p class="mb-4">
 					{{ bio }}
 				</p>
