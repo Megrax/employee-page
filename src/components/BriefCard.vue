@@ -11,9 +11,9 @@ const props = defineProps({
 
 const router = useRouter();
 
-const handleGoToDetail = () => {
+const handleGoToMember = () => {
 	router.push({
-		name: 'Detail',
+		name: 'Member',
 		params: { id: props.id },
 	});
 };
@@ -23,7 +23,7 @@ const handleGoToDetail = () => {
 	<div class="p-4 lg:w-1/4 md:w-1/3">
 		<div
 			class="h-full py-2 flex flex-col items-center text-center rounded-md cursor-pointer hover:shadow-lg"
-			@click="handleGoToDetail"
+			@click="handleGoToMember"
 		>
 			<Starport
 				:port="id"

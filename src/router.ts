@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import Overview from './pages/Overview.vue';
-import Detail from './pages/Detail.vue';
+import Member from './pages/Member.vue';
 
 const routes = [
 	{
@@ -9,9 +9,9 @@ const routes = [
 		component: Overview,
 	},
 	{
-		path: '/detail/:id',
-		name: 'Detail',
-		component: Detail,
+		path: '/member/:id',
+		name: 'Member',
+		component: Member,
 	},
 	// this redirects any unknown routes to /overview
 	{
