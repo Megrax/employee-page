@@ -5,30 +5,53 @@
 		{
 			"name": "Alper Kamu",
 			"id": "alper",
-			"age": 20,
 			"position": "UI Developer",
-			"bio": "Perhaps customized bio from Alper Kamu."
+			"bio": "Perhaps customized bio from Alper Kamu.",
+			"detail": {
+				"birthday": "2000-01-01",
+				"email": "alper@example.com",
+				"phone": "123456789",
+				"address": "123 Fake Street, Fake City, Fake Country",
+				"website": "http://www.alperkamu.com"
+			}
 		},
 		{
 			"name": "Holden Caulfield",
 			"id": "holden",
-			"age": 22,
 			"position": "Engineer",
-			"bio": "Perhaps customized bio from Holden Caulfield."
+			"bio": "Perhaps customized bio from Holden Caulfield.",
+			"detail": {
+				"birthday": "2001-03-24",
+				"email": "i@holdencaulfield.xyz",
+				"phone": "1234-123456789",
+				"address": "321 Fake Street, Fake City, Fake Country",
+				"website": "http://www.holdencaulfield.xyz"
+			}
 		},
 		{
 			"name": "Atticus Finch",
 			"id": "atticus",
-			"age": 34,
 			"position": "Architect",
-			"bio": "Perhaps customized bio from Atticus Finch."
+			"bio": "Perhaps customized bio from Atticus Finch.",
+			"detail": {
+				"birthday": "1995-06-10",
+				"email": "atticusfinch321@gmail.com",
+				"phone": "1234-987-6543",
+				"address": "4 Fake Street, Fake City, Fake Country",
+				"website": "http://www.iamfinch.com"
+			}
 		},
 		{
 			"name": "Henry Letham",
 			"id": "henry",
-			"age": 20,
 			"position": "Accounting",
-			"bio": "Perhaps customized bio from Henry Letham."
+			"bio": "Perhaps customized bio from Henry Letham.",
+			"detail": {
+				"birthday": "1999-12-04",
+				"email": "henryxyz@gmail.com",
+				"phone": "1234-987654321",
+				"address": "212 Fake Street, Fake City, Fake Country"
+			}
 		}
 	]
 }

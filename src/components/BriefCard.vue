@@ -5,7 +5,6 @@ import { useRouter } from 'vue-router';
 const props = defineProps({
 	id: { type: String, required: true },
 	name: { type: String, required: true },
-	age: { type: Number, required: true },
 	position: { type: String, required: true },
 	bio: { type: String, required: true },
 });
