@@ -23,6 +23,13 @@
       "members": [
         "alper"
       ]
+    },
+    {
+      "name": "Testing",
+      "description": "",
+      "members": [
+        "test"
+      ]
     }
   ],
   "employees": [
@@ -79,6 +86,20 @@
         "email": "henryxyz@gmail.com",
         "phone": "1234-987654321",
         "address": "212 Fake Street, Fake City, Fake Country"
+      }
+    },
+    {
+      "name": "test",
+      "id": "test",
+      "position": "test",
+      "department": "Testing",
+      "bio": "test",
+      "detail": {
+        "birthday": "2001-12-22",
+        "email": "test",
+        "phone": "test",
+        "address": "test",
+        "website": "test"
       }
     }
   ]
