@@ -1,85 +1,85 @@
 {
-	"title": "MEET OUR TEAM",
-	"teamSlogan": "All Over the World",
-	"departments": [
-		{
-			"name": "Accounting",
-			"description": "Taking care of finances.",
-			"members": [
-				"henry"
-			]
-		},
-		{
-			"name": "Development",
-			"description": "Developing products.",
-			"members": [
-				"holden",
-				"atticus"
-			]
-		},
-		{
-			"name": "Design",
-			"description": "Designing products.",
-			"members": [
-				"alper"
-			]
-		}
-	],
-	"employees": [
-		{
-			"name": "Alper Kamu",
-			"id": "alper",
-			"position": "UI Designer",
-			"department": "Design",
-			"bio": "Perhaps customized bio from Alper Kamu.",
-			"detail": {
-				"birthday": "2000-01-01",
-				"email": "alper@example.com",
-				"phone": "123456789",
-				"address": "123 Fake Street, Fake City, Fake Country",
-				"website": "http://www.alperkamu.com"
-			}
-		},
-		{
-			"name": "Atticus Finch",
-			"id": "atticus",
-			"position": "Architect",
-			"department": "Development",
-			"bio": "Perhaps customized bio from Atticus Finch.",
-			"detail": {
-				"birthday": "1995-06-10",
-				"email": "atticusfinch321@gmail.com",
-				"phone": "1234-987-6543",
-				"address": "4 Fake Street, Fake City, Fake Country",
-				"website": "http://www.iamfinch.com"
-			}
-		},
-		{
-			"name": "Holden Caulfield",
-			"id": "holden",
-			"position": "Engineer",
-			"department": "Development",
-			"bio": "Perhaps customized bio from Holden Caulfield.",
-			"detail": {
-				"birthday": "2001-03-24",
-				"email": "i@holdencaulfield.xyz",
-				"phone": "1234-123456789",
-				"address": "321 Fake Street, Fake City, Fake Country",
-				"website": "http://www.holdencaulfield.xyz"
-			}
-		},
-		{
-			"name": "Henry Letham",
-			"id": "henry",
-			"position": "Accountant",
-			"department": "Accounting",
-			"bio": "Perhaps customized bio from Henry Letham.",
-			"detail": {
-				"birthday": "1999-12-04",
-				"email": "henryxyz@gmail.com",
-				"phone": "1234-987654321",
-				"address": "212 Fake Street, Fake City, Fake Country"
-			}
-		}
-	]
+  "title": "MEET OUR TEAM",
+  "teamSlogan": "All Over the World",
+  "departments": [
+    {
+      "name": "Accounting",
+      "description": "Taking care of finances.",
+      "members": [
+        "henry"
+      ]
+    },
+    {
+      "name": "Development",
+      "description": "Developing products.",
+      "members": [
+        "holden",
+        "atticus"
+      ]
+    },
+    {
+      "name": "Design",
+      "description": "Designing products.",
+      "members": [
+        "alper"
+      ]
+    }
+  ],
+  "employees": [
+    {
+      "name": "Alper Kamu",
+      "id": "alper",
+      "position": "UI Designer",
+      "department": "Design",
+      "bio": "Perhaps customized bio from Alper Kamu.",
+      "detail": {
+        "birthday": "2000-01-01",
+        "email": "alper@example.com",
+        "phone": "123456789",
+        "address": "123 Fake Street, Fake City, Fake Country",
+        "website": "http://www.alperkamu.com"
+      }
+    },
+    {
+      "name": "Atticus Finch",
+      "id": "atticus",
+      "position": "Architect",
+      "department": "Development",
+      "bio": "Perhaps customized bio from Atticus Finch.",
+      "detail": {
+        "birthday": "1995-06-10",
+        "email": "atticusfinch321@gmail.com",
+        "phone": "1234-987-6543",
+        "address": "4 Fake Street, Fake City, Fake Country",
+        "website": "http://www.iamfinch.com"
+      }
+    },
+    {
+      "name": "Holden Caulfield",
+      "id": "holden",
+      "position": "Engineer",
+      "department": "Development",
+      "bio": "Perhaps customized bio from Holden Caulfield.",
+      "detail": {
+        "birthday": "2001-03-24",
+        "email": "i@holdencaulfield.xyz",
+        "phone": "1234-123456789",
+        "address": "321 Fake Street, Fake City, Fake Country",
+        "website": "http://www.holdencaulfield.xyz"
+      }
+    },
+    {
+      "name": "Henry Letham",
+      "id": "henry",
+      "position": "Accountant",
+      "department": "Accounting",
+      "bio": "Perhaps customized bio from Henry Letham.",
+      "detail": {
+        "birthday": "1999-12-04",
+        "email": "henryxyz@gmail.com",
+        "phone": "1234-987654321",
+        "address": "212 Fake Street, Fake City, Fake Country"
+      }
+    }
+  ]
 }
