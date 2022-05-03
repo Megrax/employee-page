@@ -1,8 +1,12 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue';
 import BriefCard from '../components/BriefCard.vue';
+import NewCard from '../components/NewCard.vue';
+import ModalWithEditor from '../components/ModalWithEditor.vue';
+import { newMemberTemplate } from '../constants';
 import config from '../../data.json';
 
+const isShow = ref<boolean>(false);
 const searchValue = ref<string>('');
 const filteredResult = computed(() => {
 	const search = searchValue.value.toLowerCase();
@@ -44,6 +48,15 @@ const filteredResult = computed(() => {
 					:position="employee.position"
 					:dep="employee.department"
 					:key="employee.name"
+				/>
+				<NewCard
+					:isModalVisible="isShow"
+					:toggleModalVisible="() => (isShow = true)"
+				/>
+				<ModalWithEditor
+					:isVisible="isShow"
+					:onClose="() => (isShow = false)"
+					:content="newMemberTemplate"
 				/>
 			</div>
 		</div>
