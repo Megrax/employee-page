@@ -5,17 +5,24 @@
 		{
 			"name": "Accounting",
 			"description": "Taking care of finances.",
-			"members": ["henry"]
+			"members": [
+				"henry"
+			]
 		},
 		{
 			"name": "Development",
 			"description": "Developing products.",
-			"members": ["holden", "atticus"]
+			"members": [
+				"holden",
+				"atticus"
+			]
 		},
 		{
 			"name": "Design",
 			"description": "Designing products.",
-			"members": ["alper"]
+			"members": [
+				"alper"
+			]
 		}
 	],
 	"employees": [
