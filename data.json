@@ -23,6 +23,13 @@
       "members": [
         "alper"
       ]
+    },
+    {
+      "name": "Product",
+      "description": "",
+      "members": [
+        "rodrigo"
+      ]
     }
   ],
   "employees": [
@@ -79,6 +86,19 @@
         "email": "henryxyz@gmail.com",
         "phone": "1234-987654321",
         "address": "212 Fake Street, Fake City, Fake Country"
+      }
+    },
+    {
+      "name": "Rodrigo Monchi",
+      "id": "rodrigo",
+      "position": "Product Manager",
+      "department": "Product",
+      "bio": "I make fantastic products.",
+      "detail": {
+        "birthday": "1990-01-09",
+        "email": "rodrigo@gmail.com",
+        "phone": "1234567",
+        "address": "fake address"
       }
     }
   ]
