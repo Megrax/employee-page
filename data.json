@@ -57,7 +57,7 @@
     {
       "name": "Holden Caulfield",
       "id": "holden",
-      "position": "Engineer",
+      "position": "Senior Engineer",
       "department": "Development",
       "bio": "Perhaps customized bio from Holden Caulfield.",
       "detail": {
