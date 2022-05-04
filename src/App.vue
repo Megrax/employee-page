@@ -1,10 +1,6 @@
 <script setup lang="ts">
 // @ts-nocheck
-console.log(
-	'process.env.VUE_APP_GITHUB_TOKEN',
-	process.env.VUE_APP_GITHUB_TOKEN
-);
-console.log('VUE_APP_GITHUB_TOKEN', VUE_APP_GITHUB_TOKEN);
+console.log('import.meta.env.VITE_VUE_APP_GITHUB_TOKEN', import.meta.env);
 </script>
 
 <template>
