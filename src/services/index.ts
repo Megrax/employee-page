@@ -41,21 +41,31 @@ export const getLatestFileSHA = async (): Promise<string> => {
 	return data.sha;
 };
 
-export const createBranch = async (id: string) => {
+export const getCorrespondingBranchPrefix = (mode: string) => {
+	switch (mode) {
+		case 'create':
+			return repoInfo.branchPrefixCreate;
+		case 'modify-member':
+			return repoInfo.branchPrefixModifyMember;
+		case 'modify-department':
+			return repoInfo.branchPrefixModifyDep;
+		default:
+			return repoInfo.branchPrefixCreate;
+	}
+};
+
+export const createBranch = async (id: string, mode: string) => {
 	const latestSHA = await getLatestMainBranchSHA();
+
 	await octokit.request(`POST /repos/{owner}/{repo}/git/refs`, {
 		owner: repoInfo.owner,
 		repo: repoInfo.name,
-		ref: `refs/heads/${repoInfo.branchPrefix}-${id}`,
+		ref: `refs/heads/${getCorrespondingBranchPrefix(mode)}-${id}`,
 		sha: latestSHA,
 	});
 };
 
-export const createCommit = async (
-	action: 'new' | 'modify',
-	id: string,
-	content: any
-) => {
+export const createCommit = async (mode: string, id: string, content: any) => {
 	const latestSHA = await getLatestFileSHA();
 	const base64Content = base64Encode(content);
 
@@ -63,25 +73,48 @@ export const createCommit = async (
 		owner: repoInfo.owner,
 		repo: repoInfo.name,
 		path: repoInfo.targetFile,
-		message: action === 'new' ? `add(member): ${id}` : `modify(member): ${id}`,
+		message:
+			mode === 'create'
+				? `add(member): ${id}`
+				: mode === 'modify-member'
+				? `modify(member): ${id}`
+				: `modify(department): ${id}`,
 		committer: {
 			name: repoInfo.committer,
 			email: repoInfo.committerEmail,
 		},
 		content: base64Content,
 		sha: latestSHA,
-		branch: `${repoInfo.branchPrefix}-${id}`,
+		branch: `${getCorrespondingBranchPrefix(mode)}-${id}`,
 	});
 };
 
-export const createPR = async (id: string, name: string) => {
+export const createPR = async (mode: string, id: string, name: string) => {
+	let message = { title: '', body: '' };
+	switch (mode) {
+		case 'create':
+			message.title = `Introducing ${name}!`;
+			message.body = `Welcome, ${name}! 🥳`;
+			break;
+		case 'modify-member':
+			message.title = `Modifying member ${name}!`;
+			message.body = `Applying changes to (member): ${name}`;
+			break;
+		case 'modify-department':
+			message.title = `Modifying department of ${name}!`;
+			message.body = `Applying changes to (department): ${name}`;
+			break;
+
+		default:
+			break;
+	}
 	await octokit.request('POST /repos/{owner}/{repo}/pulls', {
 		owner: repoInfo.owner,
 		repo: repoInfo.name,
-		title: `Introducing ${name}!`,
-		body: `Welcome, ${name}! 🥳
+		title: message.title,
+		body: `${message.body}
 > This is an automatically generated Pull Request, which means that someone has made changes to our team on the website.`,
-		head: `${repoInfo.branchPrefix}-${id}`,
+		head: `${getCorrespondingBranchPrefix(mode)}-${id}`,
 		base: 'main',
 	});
 };

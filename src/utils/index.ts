@@ -1,5 +1,6 @@
 import ace from 'ace-builds';
-import data from '../../data.json';
+import DATA from '../../data.json';
+import { TData } from '../types';
 
 export const checkEditorSyntaxError = (editor: ace.Ace.Editor): boolean => {
 	const annotations = editor.getSession().getAnnotations();
@@ -24,12 +25,30 @@ export const checkRequiredInfo = (editor: ace.Ace.Editor): string | true => {
 	return res;
 };
 
-export const checkIDUnique = (editor: ace.Ace.Editor) => {
-	const id = JSON.parse(editor.getValue());
-	return !data.employees.some((employee) => employee.id === id.id);
+export const checkIDUnique = (
+	editor: ace.Ace.Editor,
+	mode: string,
+	oldID?: string
+) => {
+	if (mode === 'create') {
+		const { id } = JSON.parse(editor.getValue());
+		return !DATA.employees.some((employee) => employee.id === id);
+	} else {
+		const { id } = JSON.parse(editor.getValue());
+		return !DATA.employees.some(
+			(employee) => employee.id === id && employee.id !== oldID
+		);
+	}
 };
 
+export const checkIfChanged = (editor: ace.Ace.Editor, oldContent: string) =>
+	// parse before stringify to ignore whitespace changes
+	JSON.stringify(JSON.parse(oldContent)) !==
+	JSON.stringify(JSON.parse(editor.getValue()));
+
 export const processNewMember = (newContent: string) => {
+	const data: TData = JSON.parse(JSON.stringify(DATA));
+
 	const newMember = JSON.parse(newContent);
 	const newMemberDep = newMember.department;
 	// check if a new department should be created
@@ -41,6 +60,40 @@ export const processNewMember = (newContent: string) => {
 		});
 	}
 	data.employees.push(newMember);
+	return data;
+};
+
+export const processModifyMember = (
+	newContent: string,
+	oldContent: string,
+	oldID: string
+) => {
+	const data: TData = JSON.parse(JSON.stringify(DATA));
+
+	const oldMember = JSON.parse(oldContent);
+	const oldMemberDep = oldMember.department;
+	const modifiedMember = JSON.parse(newContent);
+	const modifiedMemberDep = modifiedMember.department;
+
+	if (oldMemberDep !== modifiedMemberDep) {
+		const oldDep = data.departments.find((dep) => dep.name === oldMemberDep);
+		oldDep?.members.splice(oldDep.members.indexOf(oldMember.id), 1);
+		if (data.departments.some((dep) => dep.name === modifiedMemberDep)) {
+			const newDep = data.departments.find(
+				(dep) => dep.name === modifiedMemberDep
+			);
+			newDep?.members.push(modifiedMember.id);
+		} else {
+			data.departments.push({
+				name: modifiedMemberDep,
+				description: '',
+				members: [modifiedMember.id],
+			});
+		}
+	}
+
+	data.employees[data.employees.findIndex((e) => e.id === oldID)] =
+		modifiedMember;
 	return data;
 };
 

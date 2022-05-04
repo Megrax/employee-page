@@ -57,6 +57,7 @@ const filteredResult = computed(() => {
 					:isVisible="isShow"
 					:onClose="() => (isShow = false)"
 					:content="newMemberTemplate"
+					mode="create"
 				/>
 			</div>
 		</div>

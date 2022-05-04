@@ -20,5 +20,7 @@ export const repoInfo = {
 	targetFile: 'data.json',
 	committer: 'Megrax',
 	committerEmail: 'geronimooo@foxmail.com',
-	branchPrefix: 'test-branch',
+	branchPrefixCreate: 'new-member',
+	branchPrefixModifyMember: 'modify-member',
+	branchPrefixModifyDep: 'modify-department',
 };
