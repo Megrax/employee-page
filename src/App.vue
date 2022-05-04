@@ -1,6 +1,9 @@
 <script setup lang="ts">
 // @ts-nocheck
-console.log('import.meta.env.VITE_VUE_APP_GITHUB_TOKEN', import.meta.env);
+// console.log(
+// 	'import.meta.env.VITE_VUE_APP_GITHUB_TOKEN',
+// 	`${import.meta.env.VITE_VUE_APP_GITHUB_TOKEN}`
+// );
 </script>
 
 <template>
