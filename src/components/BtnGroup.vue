@@ -2,9 +2,11 @@
 import { ref } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
 import ModalWithEditor from './ModalWithEditor.vue';
+import ModalConfirm from './ModalConfirm.vue';
 import IconReply from '../components/icons/Reply.vue';
 import IconHome from '../components/icons/Home.vue';
 import IconEdit from '../components/icons/Edit.vue';
+import IconDelete from '../components/icons/Delete.vue';
 import data from '../../data.json';
 
 const router = useRouter();
@@ -43,6 +45,15 @@ const handleEdit = () => {
 	>
 		<IconEdit />
 	</div>
+	<div
+		v-show="route.name === 'Member'"
+		class="absolute top-52 left-48 w-8 h-8 flex justify-center items-center text-gray-400 hover:text-gray-600 transition-colors duration-200"
+	>
+		<label for="my-modal" class="modal-button cursor-pointer"
+			><IconDelete
+		/></label>
+	</div>
+	<ModalConfirm />
 	<ModalWithEditor
 		:isVisible="isShow"
 		:onClose="() => (isShow = false)"

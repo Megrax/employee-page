@@ -49,6 +49,8 @@ export const getCorrespondingBranchPrefix = (mode: string) => {
 			return repoInfo.branchPrefixModifyMember;
 		case 'modify-department':
 			return repoInfo.branchPrefixModifyDep;
+		case 'delete-member':
+			return repoInfo.branchPrefixDeleteMember;
 		default:
 			return repoInfo.branchPrefixCreate;
 	}
@@ -68,17 +70,30 @@ export const createBranch = async (id: string, mode: string) => {
 export const createCommit = async (mode: string, id: string, content: any) => {
 	const latestSHA = await getLatestFileSHA();
 	const base64Content = base64Encode(content);
+	let message = '';
+	switch (mode) {
+		case 'create':
+			message = `add(member): ${id}`;
+			break;
+		case 'modify-member':
+			message = `modify(member): ${id}`;
+			break;
+		case 'modify-department':
+			message = `modify(department): ${id}`;
+			break;
+		case 'delete-member':
+			message = `delete(member): ${id}`;
+			break;
+		default:
+			message = `add(member): ${id}`;
+			break;
+	}
 
 	await octokit.request('PUT /repos/{owner}/{repo}/contents/{path}', {
 		owner: repoInfo.owner,
 		repo: repoInfo.name,
 		path: repoInfo.targetFile,
-		message:
-			mode === 'create'
-				? `add(member): ${id}`
-				: mode === 'modify-member'
-				? `modify(member): ${id}`
-				: `modify(department): ${id}`,
+		message,
 		committer: {
 			name: repoInfo.committer,
 			email: repoInfo.committerEmail,
@@ -103,6 +118,10 @@ export const createPR = async (mode: string, id: string, name: string) => {
 		case 'modify-department':
 			message.title = `Modifying department of ${name}!`;
 			message.body = `Applying changes to (department): ${name}`;
+			break;
+		case 'delete-member':
+			message.title = `Farewell ${name}!`;
+			message.body = `Removing (member): ${name}`;
 			break;
 
 		default:

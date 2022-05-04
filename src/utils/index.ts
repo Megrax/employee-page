@@ -1,6 +1,6 @@
 import ace from 'ace-builds';
 import DATA from '../../data.json';
-import { TData, TDepartment } from '../types';
+import { TData, TDepartment, TEmployee } from '../types';
 
 export const checkEditorSyntaxError = (editor: ace.Ace.Editor): boolean => {
 	const annotations = editor.getSession().getAnnotations();
@@ -116,6 +116,22 @@ export const processModifyDepartment = (newContent: string) => {
 		...modifiedDep,
 		members: oldDep.members,
 	};
+	return data;
+};
+
+export const processDeleteMember = (id: string) => {
+	const data: TData = JSON.parse(JSON.stringify(DATA));
+
+	const { department: departmentName } = data.employees.find(
+		(e) => e.id === id
+	) as TEmployee;
+	data.employees = data.employees.filter((e) => e.id !== id);
+	data.departments.forEach((dep) => {
+		if (dep.name === departmentName) {
+			dep.members = dep.members.filter((m) => m !== id);
+		}
+	});
+
 	return data;
 };
 

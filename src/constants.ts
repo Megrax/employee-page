@@ -23,4 +23,5 @@ export const repoInfo = {
 	branchPrefixCreate: 'new-member',
 	branchPrefixModifyMember: 'modify-member',
 	branchPrefixModifyDep: 'modify-department',
+	branchPrefixDeleteMember: 'delete-member',
 };
