@@ -13,8 +13,7 @@
       "name": "Development",
       "description": "Developing products.",
       "members": [
-        "holden",
-        "atticus"
+        "holden"
       ]
     },
     {
@@ -38,20 +37,6 @@
         "phone": "123456789",
         "address": "123 Fake Street, Fake City, Fake Country",
         "website": "http://www.alperkamu.com"
-      }
-    },
-    {
-      "name": "Atticus Finch",
-      "id": "atticus",
-      "position": "Architect",
-      "department": "Development",
-      "bio": "Perhaps customized bio from Atticus Finch.",
-      "detail": {
-        "birthday": "1995-06-10",
-        "email": "atticusfinch321@gmail.com",
-        "phone": "1234-987-6543",
-        "address": "4 Fake Street, Fake City, Fake Country",
-        "website": "http://www.iamfinch.com"
       }
     },
     {
