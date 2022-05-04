@@ -20,26 +20,10 @@
     {
       "name": "Design",
       "description": "Designing products.",
-      "members": [
-        "alper"
-      ]
+      "members": []
     }
   ],
   "employees": [
-    {
-      "name": "Alper Kamu",
-      "id": "alper",
-      "position": "UI Designer",
-      "department": "Design",
-      "bio": "Perhaps customized bio from Alper Kamu.",
-      "detail": {
-        "birthday": "2000-01-01",
-        "email": "alper@example.com",
-        "phone": "123456789",
-        "address": "123 Fake Street, Fake City, Fake Country",
-        "website": "http://www.alperkamu.com"
-      }
-    },
     {
       "name": "Atticus Finch",
       "id": "atticus",
