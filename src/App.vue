@@ -1,4 +1,11 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+// @ts-nocheck
+console.log(
+	'process.env.VUE_APP_GITHUB_TOKEN',
+	process.env.VUE_APP_GITHUB_TOKEN
+);
+console.log('VUE_APP_GITHUB_TOKEN', VUE_APP_GITHUB_TOKEN);
+</script>
 
 <template>
 	<StarportCarrier>

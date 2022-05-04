@@ -5,7 +5,7 @@ import { base64Encode } from '../utils';
 
 const octokit = new Octokit({
 	// @ts-ignore
-	auth: process.env.VUE_APP_GITHUB_TOKEN,
+	auth: VUE_APP_GITHUB_TOKEN,
 });
 
 export const testGithubConnection = async () => {
