@@ -13,8 +13,7 @@
       "name": "Development",
       "description": "Developing products.",
       "members": [
-        "holden",
-        "atticus"
+        "holden"
       ]
     },
     {
@@ -22,6 +21,13 @@
       "description": "Designing products.",
       "members": [
         "alper"
+      ]
+    },
+    {
+      "name": "Testing",
+      "description": "",
+      "members": [
+        "atticus"
       ]
     }
   ],
@@ -41,16 +47,16 @@
       }
     },
     {
-      "name": "Atticus Finch",
+      "name": "Atticus Finchhhhhh",
       "id": "atticus",
       "position": "Architect",
-      "department": "Development",
+      "department": "Testing",
       "bio": "Perhaps customized bio from Atticus Finch.",
       "detail": {
         "birthday": "1995-06-10",
         "email": "atticusfinch321@gmail.com",
         "phone": "1234-987-6543",
-        "address": "4 Fake Street, Fake City, Fake Country",
+        "address": "999 Fake Street, Fake City, Fake Country",
         "website": "http://www.iamfinch.com"
       }
     },
