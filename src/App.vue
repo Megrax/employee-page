@@ -1,11 +1,14 @@
 <script setup lang="ts">
+import { useRoute } from 'vue-router';
 import Alert from './components/Alert.vue';
+
+const route = useRoute();
 </script>
 
 <template>
 	<StarportCarrier>
 		<Suspense>
-			<Alert />
+			<Alert v-if="route.name !== 'Login'" />
 		</Suspense>
 		<RouterView />
 	</StarportCarrier>
