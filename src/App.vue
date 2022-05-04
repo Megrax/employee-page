@@ -1,7 +1,12 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import Alert from './components/Alert.vue';
+</script>
 
 <template>
 	<StarportCarrier>
+		<Suspense>
+			<Alert />
+		</Suspense>
 		<RouterView />
 	</StarportCarrier>
 </template>

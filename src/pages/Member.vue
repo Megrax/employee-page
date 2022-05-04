@@ -15,7 +15,7 @@ const employee = config.employees.find(
 <template>
 	<section class="flex flex-col body-font">
 		<BtnGroup />
-		<div class="w-screen pt-24 flex flex-col items-center md:block">
+		<div class="w-screen pt-24 flex flex-col items-center md:block pl-32">
 			<div
 				class="w-1/3 mb-10 md:mb-0 inline-flex items-center justify-center md:justify-end md:pr-9"
 			>
@@ -53,7 +53,7 @@ const employee = config.employees.find(
 				</p>
 			</div>
 		</div>
-		<div>
+		<div class="pl-32">
 			<InfoPair
 				v-for="[type, value] in Object.entries(employee?.detail ?? {})"
 				:key="type"

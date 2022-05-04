@@ -118,3 +118,14 @@ export const createPR = async (mode: string, id: string, name: string) => {
 		base: 'main',
 	});
 };
+
+export const getPRs = async () => {
+	const { data: PRs } = await octokit.request(
+		'GET /repos/{owner}/{repo}/pulls',
+		{
+			owner: repoInfo.owner,
+			repo: repoInfo.name,
+		}
+	);
+	return PRs;
+};
