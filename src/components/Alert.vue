@@ -1,7 +1,12 @@
 <script setup lang="ts">
 import { getPRs } from '../services';
 import { repoInfo } from '../constants';
+import { useBannedIDs } from '../stores';
 const PRs = await getPRs();
+const bannedIDs = useBannedIDs();
+bannedIDs.changeState(
+	PRs.map((pr: any) => pr.head.ref.split('-').slice(-1)[0])
+);
 </script>
 <template>
 	<div class="alert shadow-md w-1/4 absolute top-16 right-16">

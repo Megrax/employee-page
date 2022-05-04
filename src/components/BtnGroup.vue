@@ -8,9 +8,11 @@ import IconHome from '../components/icons/Home.vue';
 import IconEdit from '../components/icons/Edit.vue';
 import IconDelete from '../components/icons/Delete.vue';
 import data from '../../data.json';
+import { useBannedIDs } from '../stores';
 
 const router = useRouter();
 const route = useRoute();
+const bannedIDs = useBannedIDs();
 const isShow = ref<boolean>(false);
 
 const handleGoHome = () => {
@@ -36,19 +38,38 @@ const handleGoBack = () => {
 		<IconHome />
 	</div>
 	<div
+		v-if="!bannedIDs.list.includes(route.params.id || route.params.name)"
 		class="absolute top-40 left-48 w-8 h-8 flex justify-center items-center cursor-pointer text-gray-400 hover:text-gray-600 transition-colors duration-200"
 	>
-		<label for="modify-modal" class="modal-button cursor-pointer">
+		<label for="modify-modal" :class="`modal-button cursor-pointer`">
 			<IconEdit />
 		</label>
 	</div>
 	<div
-		v-show="route.name === 'Member'"
+		v-if="bannedIDs.list.includes(route.params.id || route.params.name)"
+		class="absolute top-40 left-48 w-8 h-8 flex justify-center items-center cursor-not-allowed text-gray-400"
+	>
+		<IconEdit />
+	</div>
+	<div
+		v-show="
+			route.name === 'Member' &&
+			!bannedIDs.list.includes(route.params.id || route.params.name)
+		"
 		class="absolute top-52 left-48 w-8 h-8 flex justify-center items-center text-gray-400 hover:text-gray-600 transition-colors duration-200"
 	>
 		<label for="delete-member-modal" class="modal-button cursor-pointer"
 			><IconDelete
 		/></label>
+	</div>
+	<div
+		v-show="
+			route.name === 'Member' &&
+			bannedIDs.list.includes(route.params.id || route.params.name)
+		"
+		class="absolute top-52 left-48 w-8 h-8 flex justify-center items-center text-gray-400 cursor-not-allowed"
+	>
+		<IconDelete />
 	</div>
 	<ModalConfirm />
 	<ModalWithEditor
