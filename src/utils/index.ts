@@ -1,6 +1,6 @@
 import ace from 'ace-builds';
 import DATA from '../../data.json';
-import { TData } from '../types';
+import { TData, TDepartment } from '../types';
 
 export const checkEditorSyntaxError = (editor: ace.Ace.Editor): boolean => {
 	const annotations = editor.getSession().getAnnotations();
@@ -16,7 +16,7 @@ export const checkRequiredInfo = (editor: ace.Ace.Editor): string | true => {
 	let res: string | true = true;
 	const value = editor.getValue();
 	Object.entries(JSON.parse(value)).forEach(([k, v]) => {
-		if (k !== 'detail' && v === '') {
+		if (k !== 'detail' && k !== 'description' && v === '') {
 			if (res === true) {
 				res = `${k} is required`;
 			}
@@ -33,10 +33,15 @@ export const checkIDUnique = (
 	if (mode === 'create') {
 		const { id } = JSON.parse(editor.getValue());
 		return !DATA.employees.some((employee) => employee.id === id);
-	} else {
+	} else if (mode === 'modify-member') {
 		const { id } = JSON.parse(editor.getValue());
 		return !DATA.employees.some(
 			(employee) => employee.id === id && employee.id !== oldID
+		);
+	} else {
+		const { name } = JSON.parse(editor.getValue());
+		return !DATA.departments.some(
+			(department) => department.name === name && department.name !== oldID
 		);
 	}
 };
@@ -94,6 +99,23 @@ export const processModifyMember = (
 
 	data.employees[data.employees.findIndex((e) => e.id === oldID)] =
 		modifiedMember;
+	return data;
+};
+
+export const processModifyDepartment = (newContent: string) => {
+	const data: TData = JSON.parse(JSON.stringify(DATA));
+
+	const modifiedDep = JSON.parse(newContent);
+	let oldDep: TDepartment =
+		data.departments[
+			data.departments.findIndex((d) => d.name === modifiedDep.name)
+		];
+	data.departments[
+		data.departments.findIndex((d) => d.name === modifiedDep.name)
+	] = {
+		...modifiedDep,
+		members: oldDep.members,
+	};
 	return data;
 };
 

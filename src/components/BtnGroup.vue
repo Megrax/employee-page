@@ -47,14 +47,26 @@ const handleEdit = () => {
 		:isVisible="isShow"
 		:onClose="() => (isShow = false)"
 		:content="
-			JSON.stringify(
-				data.employees.find((e) => e.id === route.params.id),
-				null,
-				2
-			)
+			route.name === 'Member'
+				? JSON.stringify(
+						data.employees.find((e) => e.id === route.params.id),
+						null,
+						2
+				  )
+				: JSON.stringify(
+						{
+							name: data.departments.find((d) => d.name === route.params.name)
+								?.name,
+							description: data.departments.find(
+								(d) => d.name === route.params.name
+							)?.description,
+						},
+						null,
+						2
+				  )
 		"
 		:mode="`modify-${route.name.toString().toLowerCase()}`"
-		:id="(route.params.id as string)"
+		:id="(route.params.id as string) || (route.params.name as string)"
 	/>
 </template>
 

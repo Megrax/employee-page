@@ -12,6 +12,7 @@ import {
 	checkIfChanged,
 	processNewMember,
 	processModifyMember,
+	processModifyDepartment,
 } from '../utils';
 import { createBranch, createCommit, createPR } from '../services';
 
@@ -141,22 +142,25 @@ const handleRequest = async () => {
 			case 'modify-member':
 				processedData = processModifyMember(content, originalContent, props.id);
 				break;
-			// case 'modify-department':
-			// 	processedData = processModifyMember(
-			// 		content,
-			// 		originalContent,
-			// 		props.id
-			// 	);
-			// 	break;
+			case 'modify-department':
+				processedData = processModifyDepartment(content);
+				break;
 		}
 		requestStage.value = 'branching';
-		await createBranch(JSON.parse(content).id, props.mode);
+		await createBranch(
+			JSON.parse(content).id || JSON.parse(content).name,
+			props.mode
+		);
 		requestStage.value = 'committing';
-		await createCommit(props.mode, JSON.parse(content).id, processedData);
+		await createCommit(
+			props.mode,
+			JSON.parse(content).id || JSON.parse(content).name,
+			processedData
+		);
 		requestStage.value = 'pulling';
 		await createPR(
 			props.mode,
-			JSON.parse(content).id,
+			JSON.parse(content).id || JSON.parse(content).name,
 			JSON.parse(content).name
 		);
 		requestStage.value = 'done';
@@ -204,7 +208,11 @@ const handleRequest = async () => {
 					"
 					class="ml-4 text-red-500"
 				>
-					Employee's id should be unique.
+					{{
+						mode === 'modify-department'
+							? "Departments' name should be unique."
+							: "Employees' id should be unique."
+					}}
 				</div>
 				<div
 					v-show="
