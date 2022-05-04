@@ -55,7 +55,7 @@ const handleDelete = async () => {
 <template>
 	<input
 		type="checkbox"
-		id="my-modal"
+		id="delete-member-modal"
 		class="modal-toggle"
 		v-model="isVisible"
 	/>
@@ -73,7 +73,7 @@ const handleDelete = async () => {
 			</p>
 			<div class="modal-action">
 				<label
-					for="my-modal"
+					for="delete-member-modal"
 					v-show="requestStage !== 'done'"
 					class="btn normal-case"
 					>Cancel</label
@@ -90,7 +90,7 @@ const handleDelete = async () => {
 					{{ requestBtnText }}
 				</button>
 				<label
-					for="my-modal"
+					for="delete-member-modal"
 					v-show="requestStage === 'done'"
 					class="btn btn-success normal-case"
 					>{{ requestBtnText }}</label

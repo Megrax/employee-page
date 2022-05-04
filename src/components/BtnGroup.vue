@@ -20,10 +20,6 @@ const handleGoHome = () => {
 const handleGoBack = () => {
 	router.back();
 };
-
-const handleEdit = () => {
-	isShow.value = true;
-};
 </script>
 
 <template>
@@ -41,15 +37,16 @@ const handleEdit = () => {
 	</div>
 	<div
 		class="absolute top-40 left-48 w-8 h-8 flex justify-center items-center cursor-pointer text-gray-400 hover:text-gray-600 transition-colors duration-200"
-		@click="handleEdit"
 	>
-		<IconEdit />
+		<label for="modify-modal" class="modal-button cursor-pointer">
+			<IconEdit />
+		</label>
 	</div>
 	<div
 		v-show="route.name === 'Member'"
 		class="absolute top-52 left-48 w-8 h-8 flex justify-center items-center text-gray-400 hover:text-gray-600 transition-colors duration-200"
 	>
-		<label for="my-modal" class="modal-button cursor-pointer"
+		<label for="delete-member-modal" class="modal-button cursor-pointer"
 			><IconDelete
 		/></label>
 	</div>

@@ -171,84 +171,85 @@ const handleRequest = async () => {
 </script>
 
 <template>
-	<Modal v-model="isVisible" :close="onClose">
-		<div class="w-2/5 h-12 bg-white rounded-tl-xl rounded-tr-xl">
-			<div class="text-xl font-semibold my-4 ml-4 title">
-				{{ modalTitle }}
-			</div>
-		</div>
-		<div class="w-2/5 h-96 bg-white pt-6">
-			<v-ace-editor
-				@init="editorInit"
-				v-model:value="content"
-				lang="json"
-				theme="katzenmilch"
-				class="w-full h-full"
-				:options="{ useWorker: true, fontSize: '15px' }"
-			/>
-		</div>
-		<div
-			class="w-2/5 h-24 rounded-bl-xl rounded-br-xl flex flex-row justify-between items-center bg-white"
-		>
-			<div>
-				<div v-show="!isSyntaxValid" class="ml-4 text-red-500">
-					Invalid JSON syntax.
+	<input type="checkbox" id="modify-modal" class="modal-toggle" />
+	<div class="modal">
+		<div class="modal-box">
+			<h3 class="font-bold text-lg">{{ modalTitle }}</h3>
+			<p class="pt-4 h-96">
+				<v-ace-editor
+					@init="editorInit"
+					v-model:value="content"
+					lang="json"
+					theme="katzenmilch"
+					class="w-full h-full"
+					:options="{ useWorker: true, fontSize: '15px' }"
+				/>
+			</p>
+
+			<div class="modal-action flex flex-row items-center">
+				<div class="absolute left-6">
+					<div v-show="!isSyntaxValid" class="text-red-500">
+						Invalid JSON syntax.
+					</div>
+					<div
+						v-show="isSyntaxValid && typeof isRequiredFilled === 'string'"
+						class="text-red-500"
+					>
+						{{ isRequiredFilled }}
+					</div>
+					<div
+						v-show="
+							isSyntaxValid &&
+							typeof isRequiredFilled === 'boolean' &&
+							!isIDUnique
+						"
+						class="text-red-500"
+					>
+						{{
+							mode === 'modify-department'
+								? "Departments' name should be unique."
+								: "Employees' id should be unique."
+						}}
+					</div>
+					<div
+						v-show="
+							isSyntaxValid &&
+							typeof isRequiredFilled === 'boolean' &&
+							isIDUnique &&
+							!isChanged
+						"
+						class="text-red-500"
+					>
+						Content is not changed.
+					</div>
 				</div>
-				<div
-					v-show="isSyntaxValid && typeof isRequiredFilled === 'string'"
-					class="ml-4 text-red-500"
-				>
-					{{ isRequiredFilled }}
-				</div>
-				<div
-					v-show="
-						isSyntaxValid &&
-						typeof isRequiredFilled === 'boolean' &&
-						!isIDUnique
-					"
-					class="ml-4 text-red-500"
-				>
-					{{
-						mode === 'modify-department'
-							? "Departments' name should be unique."
-							: "Employees' id should be unique."
-					}}
-				</div>
-				<div
-					v-show="
-						isSyntaxValid &&
-						typeof isRequiredFilled === 'boolean' &&
-						isIDUnique &&
-						!isChanged
-					"
-					class="ml-4 text-red-500"
-				>
-					Content is not changed.
-				</div>
-			</div>
-			<div>
-				<button
+				<label
+					for="modify-modal"
 					v-show="requestStage !== 'done'"
-					class="btn mr-4 normal-case"
-					@click="handleCancel"
+					class="btn normal-case"
+					>Cancel</label
 				>
-					Cancel
-				</button>
 				<button
+					@click="handleRequest"
+					v-show="requestStage !== 'done'"
 					:class="`btn ${
 						['branching', 'committing', 'pulling'].includes(requestStage)
 							? 'loading'
 							: ''
-					} ${
-						requestStage === 'done' ? 'btn-success' : ''
-					} btn-primary mr-4 normal-case`"
-					@click="handleRequest"
+					} btn-primary normal-case text-white ml-2`"
 				>
 					{{ requestBtnText }}
 				</button>
+				<label
+					for="modify-modal"
+					@click="handleRequest"
+					v-show="requestStage === 'done'"
+					class="btn btn-success normal-case"
+					>{{ requestBtnText }}</label
+				>
 			</div>
 		</div>
-	</Modal>
+	</div>
 </template>
 
 <style scoped>

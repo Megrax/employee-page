@@ -882,11 +882,6 @@ vue-tsc@^0.34.7:
   dependencies:
     "@volar/vue-typescript" "0.34.11"
 
-vue-universal-modal@^1.1.3:
-  version "1.1.3"
-  resolved "https://registry.yarnpkg.com/vue-universal-modal/-/vue-universal-modal-1.1.3.tgz#a0b148456e30768620cf0a65a92d77cccbdb5673"
-  integrity sha512-YDDe0TuxwnjH9Pw6jc4WRndSeSCUVNy0a3xIFdNMzbObvhwiOn28mH9ZoSqgdtuNCmmePds10ExP9/3B88L25w==
-
 vue3-ace-editor@^2.2.2:
   version "2.2.2"
   resolved "https://registry.yarnpkg.com/vue3-ace-editor/-/vue3-ace-editor-2.2.2.tgz#7fd694df2f556e8859edd2322703e039461c9ecc"

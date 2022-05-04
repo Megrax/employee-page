@@ -16,7 +16,6 @@
     "vue-boring-avatars": "^1.1.0",
     "vue-router": "4",
     "vue-starport": "^0.2.10",
-    "vue-universal-modal": "^1.1.3",
     "vue3-ace-editor": "^2.2.2"
   },
   "devDependencies": {
