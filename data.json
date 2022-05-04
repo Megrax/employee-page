@@ -80,6 +80,19 @@
         "phone": "1234-987654321",
         "address": "212 Fake Street, Fake City, Fake Country"
       }
+    },
+    {
+      "name": "Henry Letham",
+      "id": "henry",
+      "position": "Accountant",
+      "department": "Accounting",
+      "bio": "Perhaps customized bio from Henry Letham.",
+      "detail": {
+        "birthday": "1999-12-04",
+        "email": "henryxyz@gmail.com",
+        "phone": "1234-987654321",
+        "address": "212 Fake Street, Fake City, Fake Country"
+      }
     }
   ]
 }
