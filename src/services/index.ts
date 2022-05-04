@@ -4,7 +4,8 @@ import { repoInfo } from '../constants';
 import { base64Encode } from '../utils';
 
 const octokit = new Octokit({
-	auth: GITHUB_TOKEN,
+	// @ts-ignore
+	auth: process.env.VUE_APP_GITHUB_TOKEN,
 });
 
 export const testGithubConnection = async () => {
