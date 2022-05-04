@@ -6,15 +6,15 @@
       "name": "Accounting",
       "description": "Taking care of finances.",
       "members": [
-        "henry"
+        "henry",
+        "atticus"
       ]
     },
     {
       "name": "Development",
       "description": "Developing products.",
       "members": [
-        "holden",
-        "atticus"
+        "holden"
       ]
     },
     {
@@ -41,10 +41,10 @@
       }
     },
     {
-      "name": "Atticus Finch",
+      "name": "Atticus Finchhhhh",
       "id": "atticus",
       "position": "Architect",
-      "department": "Development",
+      "department": "Accounting",
       "bio": "Perhaps customized bio from Atticus Finch.",
       "detail": {
         "birthday": "1995-06-10",
