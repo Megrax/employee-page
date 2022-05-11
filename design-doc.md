@@ -24,7 +24,7 @@ JSON was chosen to be the format of configuration file. Because it's not only ve
 
 The structure of `data.json` is as follows:
 
-```json
+```javascript
 {
   "title": "team title",
   "teamSlogan": "team slogan",
