@@ -7,11 +7,8 @@
 Management of employees' personal information is just indispensable for companies and teams.  As a minimum usable employee page product, this project should support these requirements:
 
 - Users can view, edit and delete employee information, as well as departments'.
-
 - Users can easily find an employee by searching.
-
 - Users should have control over public access.
-
 - The workflow should be easy to use, even without a custom server or backend.
 
 ## Design
@@ -20,11 +17,11 @@ Management of employees' personal information is just indispensable for companie
 
 Employee information needs to be persistently stored, and I'm using a configuration file for this. With full use of Git, it will be convenient both in data changing and version control.
 
-JSON was chosen to be the format of configuration file. Because it's not only very human readable, but also a full-fledged data structure for storing data. Compared to YAML or TOML , it's born following JavaScript's object syntax, making it easy to manipulate data with JS.
+JSON was chosen to be the format of configuration file. Because it's not only very human readable, but also a full-fledged data structure for storing data. Compared to YAML or TOML , it's born following JavaScript's object syntax, easy to manipulate data with JS.
 
 The structure of `data.json` is as follows:
 
-```javascript
+```jsonc
 {
   "title": "team title",
   "teamSlogan": "team slogan",
@@ -36,7 +33,7 @@ The structure of `data.json` is as follows:
         "member id"
       ]
     },
-    // ... other departments ...
+    ... other departments ...
   ],
   "employees": [
     {
@@ -45,26 +42,26 @@ The structure of `data.json` is as follows:
       "position": "employee position",
       "department": "employee department",
       "bio": "employee bio",
-      // ... other possible details ...
+      ... other possible details ...
       "detail": {
         "phone": "123456789",
         "address": "123 Fake Street, Fake City, Fake Country"
-        // ... other possible details ...
+        ... other possible details ...
       }
-      // ... other employees ...
+      ... other employees ...
     },
   ]
 }
 ```
 
-- The entire structure contains two lists of departments and employees and other information.
-- The department `name` is used as an identifier. Multiple departments cannot have duplicated names. It is the same for employee `id`.
-- Basic employee information (those not included in the `detail`) are mandatory, and it is up to the user on deciding the exact name. For example, you are free to add an `age` attribute or remove the `address` if you need.
-- This structure is designed to be highly customizable. More or less attributes are supported without changing the underlying skeleton.
+- The entire structure is made up of basic information about the team and lists of employees/departments.
+- The department `name` is used as an identifier. Multiple departments cannot have duplicated names. This is the same for employee `id`.
+- Basic employee information (those not included in the `detail`) are mandatory, but it's up to users on deciding what exact attributes to use. You are free to add an `age` attribute or remove the `address` if you like.
+- This structure is designed to be highly customizable. More or less attributes are accepted without changing the underlying skeleton.
 
 ### Modification Workflow
 
-All modifications end up changing `data.json`. So the whole workflow is based on the famous [Git workflow](https://docs.github.com/en/get-started/quickstart/github-flow) : 
+All modifications end up changing `data.json`. So the whole workflow can be based on the famous [Git workflow](https://docs.github.com/en/get-started/quickstart/github-flow) : 
 
 |       | Git Workflow                                | Employee Page Workflow                                           |
 | :---: | :------------------------------------------ | :--------------------------------------------------------------- |
@@ -73,13 +70,11 @@ All modifications end up changing `data.json`. So the whole workflow is based on
 |   3   | **Create a Pull Request** to merge changes. | **Create a Pull Request** to merge changes.                      |
 |   4   | Accept the changes by **merging PR**.       | Accept the changes by **merging PR**.                            |
 
-Thanks to [GitHub REST API](https://docs.github.com/en/rest/guides/getting-started-with-the-rest-api), the whole process can be done by programmatically sending requests to GitHub server. Although the project is hosted on GitHub, users don't need to clone and commit at code level. Changes can be made directly on the page. If the user wants to add or edit something, a modal with an embedded editor will pop up. After the user presses confirm button, requests will be automatically sent out to create a Pull Request on the changes.
-
-Due to modern deployment platforms, Git-based changes are now easy to preview. For example, with [Vercel](https://vercel.com), pending Pull Requests will be deployed to a preview environment where maintainers can view the new page within minutes.
+Thanks to [GitHub REST API](https://docs.github.com/en/rest/guides/getting-started-with-the-rest-api)s, the whole process can be done by programmatically sending some requests. Although the project is hosted on GitHub, users no longer clone and commit at code level. Instead, changes happen directly on the page. If the user wants to add or edit something, a modal with an embedded editor pops up. With a simple click to confirm, requests will be automatically sent out for a new PR. And due to modern deployment platforms like [Vercel](https://vercel.com), a preview deployment will be available for maintainers just in minutes.
 
 #### Handling Conflicts
 
-Conflicts on file changes is something inevitable for Git-based projects, so a good way to handle them should be under consideration. In this project, users can create **at most one** Pull Request for each employee/department change. If there has been any single pending PR related to an employee/department, users cannot edit it until the pending PR is resolved.
+Conflicts on file changes is something inevitable for Git-based projects, which should be under consideration. In this project, users can create **at most one** Pull Request for each employee/department's change. If there has been a pending PR related to an employee/department already, users cannot edit it until the pending PR is resolved.
 
 In this way, we "dodge" conflicts.
 
@@ -91,44 +86,44 @@ In this way, we "dodge" conflicts.
 
 ### UI
 
-This employee page is a pure front-end project, so the design of UI is one of the most important parts. I'm using a fairly modern frontend technology stack on UI development: `Vue 3` as JavaScript framework, `TypeScript` for better type support, `Tailwind CSS` for easy-to-use style utilities, and `Vite` for lightning fast dev server. All these options make the development process easy and fast, ensuring rapid prototype implementation and version iterations.
+As this page is a pure front-end project, design of UI takes the lion's share. I'm using a fairly modern frontend tech stack on UI development: `Vue 3` as JavaScript framework, `TypeScript` for type support, `Tailwind CSS` for easy-to-use style utilities, and `Vite` for lightning fast dev server. All these options make development an easy and fast process, ensuring rapid prototype implementation and version iterations.
 
 #### Routes
 
-According to requirements, this project should have at least four pages:
+According to requirements, this project should have basically four pages:
 
-- One for employees' information, with route `/member/<employee id>`. (employees' info modification)
-- One for departments' information, with route `/dep/<department name>`. (departments' info modification)
-- One for authentication, with route `/login`. (control over public access)
-- And an entry page, with route `/overview`, where it displays all employees and the searching bar.
+- One for employees' info modification, with route `/member/<employee id>`.
+- One for departments' info modification, with route `/dep/<department name>`.
+- One for control over public access, with route `/login`.
+- And an entry page, with route `/overview`, where it displays all employees and a searching bar.
 
 Irrelevant routes should be redirected back to entry.
 
 #### Layout
 
-Each page has a well-designed layout being both aesthetically pleasing and easy to use.
+Each page has a well-designed layout that is both beautiful and easy to use.
 
 - **overview** page:
   
   - Has a horizontal centered layout with team title and slogan on the top.
   
-  - Search input comes next following a grid list of employees.
+  - A grid list of employees following a search input.
   
-  - A "add new one" button displays just at the position where the next employee is expected to be, which fits well with the intuition of adding a new employee.
+  - An "add new one" button displays at an intuitive position where the next employee is supposed to be.
 
 - **member** and **department** page:
   
   - Has a same horizontal centered layout with properly aligned information list.
   
-  - There's a tool bar on the left for convenient operations such as going back or info editing.
+  - There's a useful tool bar on the left, which is the entry for operations like going back or info editing.
 
 - other layouts:
   
-  - There's an alert at top right of every page to inform users the number of current pending PRs. This reminds them to deal with pending PRs as soon as possible.
+  - There's a reminder at the top right of each page showing the number of pending PRs. This reminds the user to process the pending PRs as soon as possible.
 
 #### Functional Components
 
-This project uses out-of-box styled modal and button components from `Daisy UI` to support user interaction. And an embedded `ace-editor` for users to make modifications. Uses `vue-starport` for animation between routes and `vue-boring-avatar` for avatar presentation, which can be replaced with real-world image links in production environment.
+This project uses beautifully styled modal and button components from `Daisy UI` to handle user interaction. Inside the modal is an embedded `ace-editor` to record changes. Uses `vue-starport` for animation between routes and `vue-boring-avatar` for avatar presentation, which can be replaced with real-world image links in production environment.
 
 ## Technical Solutions
 
