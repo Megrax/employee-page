@@ -13,9 +13,9 @@ Management of employees' personal information is just indispensable for companie
 
 ### Data Storage and Structure
 
-Employee information needs to be persistently stored, and I'm using a configuration file for this. With full use of Git, it will be convenient both in data changing and version control.
+Employee information needs to be persistently stored, and a configuration file is used to achieve this. With full use of Git, it will be convenient both in data changing and version control.
 
-JSON was chosen to be the format of configuration file. Because it's not only very human readable, but also a full-fledged data structure for storing data. Compared to YAML or TOML , it's born following JavaScript's object syntax, easy to manipulate data with JS.
+JSON was chosen to be the format of configuration file. Because it's not only very human readable, but also a full-fledged data structure for storing data. Compared to YAML or TOML, it's born following JavaScript's object syntax, easy to manipulate data with JS.
 
 The structure of `data.json` is as follows:
 
