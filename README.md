@@ -1,5 +1,9 @@
 # Employee Page
 
+> This is my implementation of [bytebase/interview/103_employee_page](https://github.com/bytebase/interview/tree/main/103_employee_page).
+> 
+> <a href="./design-doc.md">Design Doc</a>
+
 ## Project Tech Stack
 
 `Vue 3` + `TypeScript` + `Tailwind CSS` + `Daisy UI` + `Pinia` + `Vite`
